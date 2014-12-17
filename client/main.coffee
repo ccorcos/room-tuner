@@ -41,7 +41,7 @@ initAudio = (stream) ->
     # by using a BiQuadFilterNode:
     filterNode = context.createBiquadFilter()
     filterNode.type = filterNode.LOWPASS
-    filterNode.frequency.value = 3800
+    filterNode.frequency.value = 4410
     filterNode.Q.value = 1.5
     filterNode.gain.value = 0
 
@@ -50,8 +50,10 @@ initAudio = (stream) ->
 
     # set up the analyser
     analyser = context.createAnalyser()
-    # analyser.fftSize = 2048
-    analyser.fftSize = 1024
+    analyser.fftSize = 2048
+    # analyser.fftSize = 1024
+    # analyser.fftSize = 512
+    # analyser.fftSize = 256
 
     # pipe through the analyser to the destination
     filterNode.connect(analyser)
@@ -72,6 +74,12 @@ initAudio = (stream) ->
     # draw the spectrum on the canvas
     draw = ->
 
+        # min = analyser.minDecibels
+        # max = analyser.maxDecibels
+        # range = max - min
+        # console.log min, max
+        # console.log dataArray
+
         drawVisual = requestAnimationFrame(draw)
         analyser.getByteFrequencyData(dataArray)
 
@@ -82,10 +90,10 @@ initAudio = (stream) ->
 
         x = 0
         for i in [0...bufferLength]
-            barHeight = dataArray[i]/200*height
+            barHeight = dataArray[i]/255*height
 
             canvas.fillStyle = 'rgb(255,50,50)';
-            canvas.fillRect(x,height-barHeight/2,barWidth,barHeight);
+            canvas.fillRect(x,height-barHeight,barWidth,barHeight);
             x += barWidth + 1;
 
     draw()
