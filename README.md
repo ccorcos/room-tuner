@@ -1,4 +1,4 @@
-# Room Tuner
+# Room Tuner ([Demo](http://room-tuner.meteor.com))
 
 This app plays pink noise and presents a spectrum analyzer so you can tune a room using with an equalizer.
 
