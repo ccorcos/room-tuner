@@ -1,6 +1,6 @@
 # Room Tuner
 
-This app plays pink noise and presents a spectrum analyser so you can tune a room using with an equalizer.
+This app plays pink noise and presents a spectrum analyzer so you can tune a room using with an equalizer.
 
 WARNING: There may be some aliasing going on if you're using your Macbook microphone!
 
